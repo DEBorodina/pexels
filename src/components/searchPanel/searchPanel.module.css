@@ -12,7 +12,7 @@
     display:flex;
     flex-direction: column;
     align-items: center;
-    z-index: 11;
+    z-index: 9;
 }
 
 .stickyHeader {
@@ -65,9 +65,25 @@
     height: 50px;
 }
 
-.pexelsLogoLink:hover svg {
-    filter: brightness(.7);
+.pexelsLogo {
+    width: 130px;
+    height: 50px;
+}
+
+.pexelsLogoLink:hover {
+    cursor: pointer;
     transition: .25s ease;
+    filter: brightness(.7);
+}
+
+.pexelsLogoLink:hover  .pexelsLogo rect{
+    transition: .25s ease;
+    fill: #07a081;
+}
+
+.pexelsLogoLink:hover  .pexelsLogo path{
+    transition: .25s ease;
+    filter: brightness(.7);
 }
 
 .searchContainer {
