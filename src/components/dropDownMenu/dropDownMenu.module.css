@@ -1,0 +1,132 @@
+button{
+    background-color: inherit;
+    border: none;
+}
+
+.menu {
+    position: relative;
+}
+
+.main {
+    height: 50px;
+    background-color: #ffffff;
+    border: 1px solid #dfdfe0;
+    border-radius: 6px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #4a4a4a;
+        cursor: pointer;
+}
+
+.content {
+    height: 50px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main:hover {
+    border: 1px solid #7f7f7f;
+    cursor: pointer;
+}
+
+.main:hover .content>button>svg>path{
+    transition: .25s;
+    fill: #7f7f7f;
+}
+
+.content>button>svg>path{
+    transition: .25s;
+    fill: #dfdfe0;
+}
+
+.content>button {
+    height: 7.4px;
+    width: 12px;
+}
+
+.main:active{
+    border: 1px solid #7f7f7f;
+}
+
+.main:active .content>button>svg>path{
+    transition: .25s;
+    fill:#4a4a4a;
+}
+
+.main:active .content>button{
+    transition: .25s;
+    transform: rotate(0deg);
+}
+
+.scale {
+    transition: .25s;
+    transform: rotate(180deg);
+}
+
+.dropDown{
+    display:none;
+    flex-direction: column;
+    position: absolute;
+    z-index: 100;
+    top: calc(100% + 8px);
+    width: 100%;
+    left: 0px;
+    border-radius: 6px;
+    border: 1px solid #dfdfe0;
+    background: #fff;
+    box-shadow: 0 3px 5px 1px rgb(0 0 0 / 5%);
+    overflow:hidden;
+}
+
+.show{
+    display: flex;
+}
+
+.dropDownButton {
+    position: relative;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    padding: 0 20px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #4a4a4a;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dropDownButton:hover{
+    background-color: #f7f7f7;
+}
+
+.changed{
+    border-color: #4a4a4a;
+    background: #ededed;
+}
+
+.changed>div>button>svg>path{
+    fill: #4a4a4a;
+}
+
+.dropDownButton:after{
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+    left: 20px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    content: "";
+    border: none;
+    background: #f7f7f7;
+}
+
+.choosen {
+    color: #000;
+}
