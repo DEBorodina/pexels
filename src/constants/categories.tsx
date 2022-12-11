@@ -1,5 +1,11 @@
 import { v4 as uuid } from 'uuid';
-const categories = [
+
+export interface Category{
+    name:string,
+    id:string,
+}
+
+export const categories:Array<Category> = [
     {name: 'fruit', id: uuid() },
     {name: 'fall', id: uuid() },
     {name: 'spring', id: uuid() },
@@ -40,6 +46,4 @@ const categories = [
     {name: 'winter', id: uuid() },
     {name: 'sky', id: uuid() },
     {name: 'landscape', id: uuid() },  
-]
-
-export default categories
+];

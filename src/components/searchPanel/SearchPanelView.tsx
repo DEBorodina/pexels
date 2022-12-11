@@ -8,9 +8,9 @@ const SearchPanelView:React.FC<{hidden:boolean}> = ({hidden}) => {
   return (
     <header className={styles.stickyHeader+(hidden?(' '+(styles.cover)):'')} id='stickyHeader'>
     <div className={styles.pexelsLogoContainer}>
-      <Link to={'/'} className={styles.pexelsLogoLink}>
+      <a href="https://www.pexels.com" className={styles.pexelsLogoLink}>
         <Icons id='blackLogo'/>
-      </Link>
+      </a>
       <InputForm stickyHeaderForm={true}/>
     </div>
     </header>

@@ -2,15 +2,24 @@ import styles from './mainHeader.module.css';
 import InputForm from '../inputForm/InputForm';
 import Icons from '../icons/Icons';
 import { Link } from "react-router-dom";
+import { Category } from '../../constants/categories';
+import { Photo } from 'pexels';
+import { load } from '../pictureCard/PictureCard';
 
-const MainHeaderView:React.FC<{categories:Array<{name:string,id:string}>}> = ({categories}) => {
+interface MainHeaderProbs {
+  categories:Array<Category>,
+  mainPicture:Photo,
+  loadSrc:load;
+}
+
+const MainHeaderView:React.FC<MainHeaderProbs> = ({categories,mainPicture:{src,photographer,photographer_url,alt,id},loadSrc}) => {
     return (
       <header className={styles.header} id='header'>
-      <img className={styles.backgroundImage} src="https://images.pexels.com/photos/12366051/pexels-photo-12366051.jpeg?auto=compress&bri=5&cs=tinysrgb&fit=crop&h=500&w=2000"/>
+      <img className={styles.backgroundImage} src={src[loadSrc]} alt={String(alt)} id={String(id)}/>
       <div className={styles.pexelsLogoContainer}>
-        <Link to={'/'}className={styles.pexelsLogoLink}>
+        <a href="https://www.pexels.com" className={styles.pexelsLogoLink}>
           <Icons id="whiteLogo"/>
-        </Link>
+        </a>
       </div>
       <div className={styles.searchContainer}>
         <h1 className={styles.searchHeader}>
@@ -25,9 +34,9 @@ const MainHeaderView:React.FC<{categories:Array<{name:string,id:string}>}> = ({c
               )}
           </ul>
         </div>
-        <a href="#" className={styles.authorContainer}>
+        <a href={photographer_url} className={styles.authorContainer}>
           <span className={styles.photoBy}>Photo by &nbsp;</span>
-          <span className={styles.authorName}>Mahdi Bafande</span>
+          <span className={styles.authorName}>{photographer}</span>
         </a>
       </div>
      </header>

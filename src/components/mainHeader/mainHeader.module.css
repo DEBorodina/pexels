@@ -8,6 +8,7 @@
 
 .header {
     position: relative;
+    z-index: 1;
     height: 500px;
     display:flex;
     flex-direction: column;
@@ -189,4 +190,8 @@
 
 .photoBy {
     opacity: .6;
+}
+
+.remove{
+    display: none;
 }

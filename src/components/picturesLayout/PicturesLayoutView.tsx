@@ -1,17 +1,28 @@
+import { Photo } from 'pexels';
 import React from 'react';
 import PicturesColumn from '../picturesColumn/PicturesColumn';
 import styles from './picturesLayout.module.css'
 
-const PicturesLayout:React.FC<{num:number}> = ({num}) => {
+interface PicturesLayoutProps{
+  pictures:Array<Array<Photo>>,
+  columnNumber:number
+}
+
+const PicturesLayoutView:React.FC<PicturesLayoutProps> = ({pictures,columnNumber}) => {
+
+  let columns:Array<JSX.Element> = []; 
+  while(columnNumber>0){
+    columns.push(<PicturesColumn pictures={pictures[3-columnNumber]} key={columnNumber}/>);
+    columnNumber-=1;
+  }
+
   return (
-    <main className={styles.main}>
+    <main className={styles.main} id="main">
     <div className={styles.mainContainer}>
-      <PicturesColumn num={num}/>
-      <PicturesColumn num={num}/>
-      <PicturesColumn num={num}/>
+      {columns.map(column=>column)}
     </div>
    </main>
   );
 }
 
-export default PicturesLayout;
+export default PicturesLayoutView;

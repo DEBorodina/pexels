@@ -8,6 +8,7 @@
 
 .mainContainer {
     z-index: 1;
+    width: calc(100% - 60px);
     max-width: 1350px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
