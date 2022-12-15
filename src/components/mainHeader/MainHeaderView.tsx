@@ -15,7 +15,7 @@ interface MainHeaderProbs {
 const MainHeaderView:React.FC<MainHeaderProbs> = ({categories,mainPicture:{src,photographer,photographer_url,alt,id},loadSrc}) => {
     return (
       <header className={styles.header} id='header'>
-      <img className={styles.backgroundImage} src={src[loadSrc]} alt={String(alt)} id={String(id)}/>
+      <img className={styles.backgroundImage} src={src?src[loadSrc]:""} alt={alt?String(alt):""} id={String(id)}/>
       <div className={styles.pexelsLogoContainer}>
         <a href="https://www.pexels.com" className={styles.pexelsLogoLink}>
           <Icons id="whiteLogo"/>

@@ -1,15 +1,13 @@
 import MainHeaderView from './MainHeaderView'
-import { Category, categories } from '../../constants/categories'
-import { connect } from 'react-redux';
-import {State} from '../../redux/pictureReducer';
+import { Category} from '../../constants/categories'
 import { useEffect, useState } from 'react';
 import { Photo } from 'pexels';
 import { load } from '../pictureCard/PictureCard';
+import { useSelector } from 'react-redux';
 
-const MainHeader:React.FC<{mainPicture:Photo}> = ({mainPicture}) => {
+const MainHeader:React.FC<{categories:Array<Category>}> = ({categories}) => {
 
-  categories.sort(()=>Math.random()-0.5);
-  const currentCathegories:Array<Category> = categories.slice(0,7);
+  const mainPicture:Photo = useSelector((state:{pictures:{mainPic:Photo}}) => state.pictures.mainPic);
 
   const loadSeq:Array<load> = ['small','medium','large','large2x','original']
   const [src,setSrc] = useState<number>(0);
@@ -25,10 +23,8 @@ const MainHeader:React.FC<{mainPicture:Photo}> = ({mainPicture}) => {
   })
 
   return (
-   <MainHeaderView categories={currentCathegories} mainPicture={mainPicture} loadSrc={loadSeq[src]}/>
+   <MainHeaderView categories={categories} mainPicture={mainPicture} loadSrc={loadSeq[src]}/>
   );
 }
 
-const mapStateToProps = (state:{pictures:State}) => ({mainPicture:state.pictures.mainPic});
-
-export default connect(mapStateToProps)(MainHeader);
+export default MainHeader;

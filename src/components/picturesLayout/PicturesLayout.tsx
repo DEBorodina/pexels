@@ -1,45 +1,51 @@
 import { Photo } from 'pexels';
 import React, {useEffect,useState} from 'react';
+import { useSelector } from 'react-redux';
 import { connect, useDispatch } from 'react-redux';
-import { ADD_PICS } from '../../redux/actionsTypes';
+import { useParams } from 'react-router-dom';
+import { ADD_PICS, REMOVE_PICS } from '../../redux/actionsTypes';
 import { State} from '../../redux/pictureReducer';
 import PicturesLayoutView from './PicturesLayoutView'
 
-const PicturesLayout:React.FC<{pictures:Array<Photo>}> = ({pictures}) => {
+const PicturesLayout = () => {
 
   const columnNumber = 3;
 
-  const dispatch = useDispatch();
+  const pictures:Array<Photo>= useSelector((state:{pictures:{pictures:Array<Photo>}}) => state.pictures.pictures);
+  const error:string= useSelector((state:{pictures:State}) => state.pictures.error);
 
   let devidedPictures:Array<Array<Photo>> = [[],[],[]];
 
   pictures.forEach((picture,index)=>{
     devidedPictures[index%columnNumber].push(picture);
   })
+  const dispatch = useDispatch();
+  const {category} = useParams();
 
   useEffect(()=>{
-    window.addEventListener('scroll',()=>{
-      const mainHeight:number = Math.max(
-        document.body.scrollHeight, document.documentElement.scrollHeight,
-        document.body.offsetHeight, document.documentElement.offsetHeight,
-        document.body.clientHeight, document.documentElement.clientHeight
-      );
-      const height = window.pageYOffset;
-      const clientHeight = document.documentElement.clientHeight
-     if(clientHeight*3+height>mainHeight){
-        dispatch({ type: ADD_PICS });
-      }
-    })
-
+    let position = 0;
+      window.addEventListener('scroll',() => {
+        const mainHeight:number = Math.max(
+          document.body.scrollHeight, document.documentElement.scrollHeight,
+          document.body.offsetHeight, document.documentElement.offsetHeight,
+          document.body.clientHeight, document.documentElement.clientHeight
+        );
+        const height = window.pageYOffset;
+        const clientHeight = document.documentElement.clientHeight
+       if((clientHeight+height+1500)>mainHeight && position<(clientHeight+height)){
+        console.log((clientHeight+height+1500),mainHeight)
+          position=(clientHeight+height+2000);
+          dispatch({ type: ADD_PICS,category});
+        }
+      });
   },[])
 
   return (
+    error?<h1>{error}</h1>:
     <PicturesLayoutView pictures={devidedPictures} columnNumber={columnNumber}/>
   );
 
 }
 
-const mapStateToProps = (state:{pictures:State}) => ({pictures:state.pictures.pictures});
-
-export default connect(mapStateToProps)(PicturesLayout);
+export default PicturesLayout;
 

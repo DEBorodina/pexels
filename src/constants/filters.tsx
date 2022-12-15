@@ -1,28 +1,24 @@
-export enum Orientation {
-    allOrientations="All Orientations",
-    horizontal="Horizontal",
-    vertical="Vertical",
-    square="Square",
+export interface Filter {
+    name:string,
+    query:FilterQuery
 }
 
-export enum Size {
-    allSizes="All Sizes",
-    large="Large",
-    medium="Medium",
-    small="Small",
+export interface FilterQuery{
+    orientation?:string,
+    size?:string,
 }
 
-export const filters:{orientations:Array<Orientation>,sizes:Array<Size>} = {
-    orientations:[
-        Orientation.allOrientations,
-        Orientation.horizontal,
-        Orientation.vertical,
-        Orientation.square
+export const filters = {
+    orientation:[
+        {name:"All Orientations",query:{}},
+        {name:"Horizontal", query:{orientation:"landscape"}},
+        {name:"Vertical", query:{orientation:"portrait"}},
+        {name:"Square", query:{orientation:"square"}},
     ],
-    sizes:[
-        Size.allSizes,
-        Size.large,
-        Size.medium,
-        Size.small,
+    size:[
+        {name:"All Sizes",query:{}},
+        {name:"Large",query:{size:"large"}},
+        {name:"Medium",query:{size:"medium"}},
+        {name:"Small",query:{size:"small"}},
     ]
 }

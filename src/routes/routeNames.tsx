@@ -1,4 +1,4 @@
 export const ROUTE_NAMES = {
     HOME_PAGE: "/",
-    CATHEGORY_PAGE:"/search/:cathegory",
+    CATHEGORY_PAGE:"/search/:category",
   };

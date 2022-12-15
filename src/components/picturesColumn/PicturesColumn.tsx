@@ -2,9 +2,9 @@ import { Photo } from 'pexels';
 import React from 'react';
 import PicturesColumnView from './PicturesColumnView'
 
-const PicturesLayout:React.FC<{pictures:Array<Photo>}>  = ({pictures}) => {
+const PicturesLayout:React.FC<{pictures:Array<Photo>,id:number}>  = ({pictures,id}) => {
   return (
-   <PicturesColumnView pictures={pictures}/>
+   <PicturesColumnView pictures={pictures} id={id}/>
   );
 }
 

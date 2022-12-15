@@ -14,8 +14,11 @@ const PictureCard:React.FC<{picture:Photo,liked:Array<number>}> = ({picture,like
 
   const loadSeq:Array<load>  = ['small','medium','large'];
   const [src,setSrc] = useState<number>(0);
+
   const loaded = () => {
     const img = document.getElementById(String(picture.id))!;
+    img.style.background = "#fff";
+    img.style.minHeight = String(0)+'px';
     setSrc(src=>{
       if(src==2) return 2;
       else return src+1;
@@ -33,6 +36,7 @@ const PictureCard:React.FC<{picture:Photo,liked:Array<number>}> = ({picture,like
   async function downloadFile(url:string, fileName:string) {
     const image = await fetch(url);
     const imageBlog = await image.blob();
+    console.log(imageBlog);
     const imageURL = URL.createObjectURL(imageBlog);
     const link = document.createElement('a');
     link.href = imageURL;
@@ -47,7 +51,7 @@ const PictureCard:React.FC<{picture:Photo,liked:Array<number>}> = ({picture,like
     const img = document.getElementById(String(picture.id))!;
     let width:number = img.offsetWidth;
     let height:number = width*picture.height/picture.width;
-    img.style.minHeight = String(height-5)+'px';
+    img.style.minHeight = String(height)+'px';
     img.style.background = picture.avg_color!;
   },[])
 

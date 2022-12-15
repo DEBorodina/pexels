@@ -1,18 +1,17 @@
 import { Photo } from "pexels";
-import { Orientation, Size,filters } from "../constants/filters";
+import { filters } from "../constants/filters";
 import { addLiked, getLiked, removeLiked } from "../localStorage/localStoradge";
-import { SET_MAIN_PIC, MAIN_PIC_IS_LOADING,SET_PICS, LIKE_PIC, UNLIKE_PIC} from "./actionsTypes";
+import { SET_MAIN_PIC, SET_PICS, LIKE_PIC, UNLIKE_PIC, REMOVE_PICS, SET_FILTERS, CLEAR_FILTERS, SET_ERROR } from "./actionsTypes";
 
-export interface Filters {
-    orientation:Orientation,
-    size:Size,
-}
+export type Filters = {orientation:number,size:number};
 
 export interface State {
     mainPic:Photo,
     pictures:Array<Photo>,
     filters:Filters,
     liked:Array<number>,
+    total:number,
+    error:string,
 }
 
 const initialState:State = {
@@ -40,18 +39,18 @@ const initialState:State = {
     },
     pictures:[],
     filters:{
-        orientation:filters.orientations[0],
-        size:filters.sizes[0],
+        orientation:0,
+        size:0,
     },
     liked:getLiked(),
+    total:0,
+    error:'',
 }
 
-export const pictureReducer = (state = initialState, action:{type:string,payload:any})=>{
+export const pictureReducer = (state = initialState, action:any)=>{
     switch(action.type){
         case SET_MAIN_PIC:
             return {...state,mainPic:{...action.payload}}
-        case MAIN_PIC_IS_LOADING:
-            return {...state,mainPic:{...state.mainPic,isLoading:action.payload}}
         case SET_PICS:
             let addPics:Array<Photo> = [];
             action.payload.forEach((pic:Photo)=>{
@@ -59,14 +58,21 @@ export const pictureReducer = (state = initialState, action:{type:string,payload
                     addPics.push(pic);
                 }
             })
-            return {...state, pictures:[...state.pictures,...addPics]}
+            return {...state, pictures:[...state.pictures,...addPics],total:action.total}
+        case REMOVE_PICS:
+            return {...state, pictures:[],total:0}    
         case LIKE_PIC:
             addLiked(action.payload);
             return {...state,liked:[...getLiked()]};
         case UNLIKE_PIC:
             removeLiked(action.payload);
-            return {...state,liked:[...getLiked()]};         
-
+            return {...state,liked:[...getLiked()]};
+        case SET_FILTERS:
+            return {...state,filters:{...state.filters,...action.payload}};
+        case CLEAR_FILTERS:
+            return {...state,filters:{orientation:0,size:0}}; 
+        case SET_ERROR:
+            return {...state,error:action.error};
         default: return state;
     }
 }

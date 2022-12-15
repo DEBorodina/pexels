@@ -2,16 +2,17 @@ import React from 'react';
 import styles from './categoryHeader.module.css';
 import DropDownMenu from '../dropDownMenu/DropDownMenu';
 import Icons from '../icons/Icons';
+import { Filters } from '../../redux/pictureReducer';
 
-const CategoryHeaderView:React.FC<{showFilters:boolean, toggleFilters: ()=>void}> = ({showFilters,toggleFilters}) => {
+const CategoryHeaderView:React.FC<{showFilters:boolean, toggleFilters: ()=>void, category:string,total:string}> = ({showFilters,toggleFilters,category,total}) => {
   return (
    <header className={styles.container}>
     <div className={styles.content}>
-    <h1 className={styles.header}>Sky Images & Wallpapers</h1>
+    <h1 className={styles.header}>{category}</h1>
     <div className={styles.buttonContainer}>
       <div className={styles.photoesContainer}>
          <span className={styles.photoes}>Photos</span>
-         <span className={styles.photoesNumber}>21.5K</span>
+         <span className={styles.photoesNumber}>{total}</span>
        </div>
        <div className={styles.buttonGroup}>
        <button className={styles.filters} onClick={toggleFilters}>
@@ -26,8 +27,8 @@ const CategoryHeaderView:React.FC<{showFilters:boolean, toggleFilters: ()=>void}
        </div>
     </div>
     <div className={styles.filtersContainer+(showFilters?(' '+styles.showFilters):'')}>
-      <DropDownMenu/>
-      <DropDownMenu/>
+      <DropDownMenu filterType={"orientation"}/>
+      <DropDownMenu filterType={"size"}/>
     </div>
     </div>
    </header>
