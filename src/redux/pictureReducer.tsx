@@ -1,7 +1,7 @@
 import { Photo } from "pexels";
 import { filters } from "../constants/filters";
 import { addLiked, getLiked, removeLiked } from "../localStorage/localStoradge";
-import { SET_MAIN_PIC, SET_PICS, LIKE_PIC, UNLIKE_PIC, REMOVE_PICS, SET_FILTERS, CLEAR_FILTERS, SET_ERROR } from "./actionsTypes";
+import { SET_MAIN_PIC, SET_PICS, LIKE_PIC, UNLIKE_PIC, REMOVE_PICS, SET_FILTERS, SET_ERROR, REMOVE_ERROR, REMOVE_FILTERS, SET_CATEDGORY } from "./actionsTypes";
 
 export type Filters = {orientation:number,size:number};
 
@@ -12,6 +12,7 @@ export interface State {
     liked:Array<number>,
     total:number,
     error:string,
+    category:string,
 }
 
 const initialState:State = {
@@ -45,6 +46,7 @@ const initialState:State = {
     liked:getLiked(),
     total:0,
     error:'',
+    category:"",
 }
 
 export const pictureReducer = (state = initialState, action:any)=>{
@@ -69,10 +71,14 @@ export const pictureReducer = (state = initialState, action:any)=>{
             return {...state,liked:[...getLiked()]};
         case SET_FILTERS:
             return {...state,filters:{...state.filters,...action.payload}};
-        case CLEAR_FILTERS:
+        case REMOVE_FILTERS:
             return {...state,filters:{orientation:0,size:0}}; 
         case SET_ERROR:
             return {...state,error:action.error};
+        case REMOVE_ERROR:
+            return {...state,error:''};
+        case SET_CATEDGORY:
+            return {...state, category:action.category};       
         default: return state;
     }
 }

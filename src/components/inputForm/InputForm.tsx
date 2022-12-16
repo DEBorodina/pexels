@@ -16,7 +16,6 @@ const InputForm:React.FC<{stickyHeaderForm:boolean}> = ({stickyHeaderForm}) => {
 
   const dispatch = useDispatch()
   const handleSubmit = (event:React.FormEvent<HTMLFormElement>):void => {
-    //event.preventDefault();
     navigate(`/search/${input}`)
   }
 

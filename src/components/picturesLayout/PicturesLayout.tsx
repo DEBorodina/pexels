@@ -31,10 +31,12 @@ const PicturesLayout = () => {
           document.body.clientHeight, document.documentElement.clientHeight
         );
         const height = window.pageYOffset;
-        const clientHeight = document.documentElement.clientHeight
+        const clientHeight = document.documentElement.clientHeight;
+        if(clientHeight+height<730){
+          position = 0;
+        }
        if((clientHeight+height+1500)>mainHeight && position<(clientHeight+height)){
-        console.log((clientHeight+height+1500),mainHeight)
-          position=(clientHeight+height+2000);
+         position=(mainHeight);
           dispatch({ type: ADD_PICS,category});
         }
       });

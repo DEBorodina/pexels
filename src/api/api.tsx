@@ -20,14 +20,10 @@ export async function fetchPics(currentPage:number = 0, category?:string, query?
 
     let data:Photos|ErrorResponse;
 
-
-    console.log('fetch',currentPage);
     if(!category){
         data = await client.photos.curated({ per_page: perPage, page: currentPage+1});
-        console.log({ per_page: perPage, page: currentPage+1 });
     } else {
         data = await client.photos.search({ per_page: perPage, page: currentPage+1,query:category+1,...query});
-        console.log({ per_page: perPage, page: currentPage+1,query:category,...query});
     }
 
     const {total_results} = (data as PhotosWithTotalResults);

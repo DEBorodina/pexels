@@ -11,6 +11,9 @@ export const UNLIKE_PIC = "UNLIKE_PIC";
 
 export const CHANGE_FILTERS = "CHANGE_FILTERS";
 export const SET_FILTERS = "SET_FILTERS";
-export const CLEAR_FILTERS = "CLEAR_FILTERS";
+export const REMOVE_FILTERS = "REMOVE_FILTERS";
 
 export const SET_ERROR = "SET_ERROR";
+export const REMOVE_ERROR = "REMOVE_ERROR";
+
+export const  SET_CATEDGORY = "SET_CATEDGORY";

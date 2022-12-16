@@ -1,5 +1,5 @@
-import {takeEvery,call,put,fork,all, select, spawn} from 'redux-saga/effects';
-import { SET_MAIN_PIC, GET_MAIN_PAGE,SET_PICS, ADD_PICS, GET_CATEGORY_PAGE, CHANGE_FILTERS, SET_FILTERS, REMOVE_PICS, SET_ERROR} from './actionsTypes';
+import {takeEvery,call,put,fork,all, select, spawn, actionChannel} from 'redux-saga/effects';
+import { SET_MAIN_PIC, GET_MAIN_PAGE,SET_PICS, ADD_PICS, GET_CATEGORY_PAGE, CHANGE_FILTERS, SET_FILTERS, REMOVE_PICS, SET_ERROR, SET_CATEDGORY} from './actionsTypes';
 import {fetchMainPic, fetchPics, perPage} from '../api/api';
 import { Filters, State } from './pictureReducer';
 import { FilterQuery, filters } from '../constants/filters';
@@ -20,6 +20,8 @@ const makeQuery = (state:{pictures:{filters:Filters}}) => {
   }
 
 const mainPicIsSet = (state:{pictures:State})=>{Boolean(state.pictures.mainPic.url)};
+
+const getCategory = (state:{pictures:State}) => state.pictures.category;
 
 export function *sagaWatcher(){
         yield spawn(mainPageWatcher);
@@ -51,6 +53,7 @@ function *filtersWorker(action:{type:string,category?:string,query?:any}):Genera
 }
 
 function *mainPageWorker(action:{type:string,payload:string}):Generator<any,any,any>{
+    yield put ({type:SET_CATEDGORY,category:""});
     yield spawn(mainPicWorker);
     yield spawn(picsWorker,action);
 }
@@ -69,21 +72,22 @@ function *mainPicWorker():Generator<any,any,any>{
 
 function *picsWorker(action:{type:string,category?:string,query?:FilterQuery}):Generator<any,any,any>{
     try{
-     let query = yield select(makeQuery);
+    if(action.category){
+           yield put ({type:SET_CATEDGORY,category:action.category});
+    }else{
+        yield put ({type:SET_CATEDGORY,category:""});
+    }
+    let category = yield select(getCategory);
+    let query = yield select(makeQuery);
     if(Object.keys(query).length){
         action = {...action,query};
     }else{
         action = {...action};
     }
     const currentPage = yield select(getPage); 
-    let {pictures,total} = yield call(fetchPics,currentPage,action?.category,action?.query);  
+    let {pictures,total} = yield call(fetchPics,currentPage,category,action?.query);  
     yield put({type:SET_PICS,payload:pictures,total});
     }catch{
         yield put({type:SET_ERROR,error:"Fetching error"})
     }
-}
-
-async function sleep(){
-    console.log('hi');
-    await new Promise(resolve => setTimeout(resolve, 4000))
 }

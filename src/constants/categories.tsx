@@ -44,6 +44,6 @@ export const categories:Array<Category> = [
     {name: 'city', id: uuid() },
     {name: 'nature', id: uuid() },
     {name: 'winter', id: uuid() },
-    {name: 'sky', id: uuid() },
+    {name: 'garden', id: uuid() },
     {name: 'landscape', id: uuid() },  
 ];

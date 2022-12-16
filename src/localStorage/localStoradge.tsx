@@ -23,6 +23,7 @@ export const removeLiked = (id:number):void => {
         let liked = JSON.parse(localStorage.getItem('liked')!);
         const index = liked.indexOf(id);
         if (index !== -1) liked.splice(index, 1);
-        localStorage.setItem('liked',JSON.stringify([liked]));
+
+        localStorage.setItem('liked',JSON.stringify(liked));
     }
 }
