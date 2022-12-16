@@ -30,7 +30,7 @@ const MainHeaderView:React.FC<MainHeaderProbs> = ({categories,mainPicture:{src,p
           <span className={styles.trending}>Trending: &nbsp;</span> 
           <ul className={styles.trendingList}>
             {categories.map(({id,name},index)=>
-                <li key={id} className={styles.trendingListItem} ><Link to={`/search/${name}`} className={styles.trendingListItemText} >{name}</Link><span>{index==6?"":","}&nbsp;</span></li>
+                <li key={id} className={styles.trendingListItem} ><Link to={`/pexels/search/${name}`} className={styles.trendingListItemText} >{name}</Link><span>{index==6?"":","}&nbsp;</span></li>
               )}
           </ul>
         </div>
