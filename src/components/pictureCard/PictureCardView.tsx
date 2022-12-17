@@ -22,7 +22,6 @@ const PictureCardView:React.FC<PictureCardViewProps> = ({picture:{src,photograph
             <button className={styles.button+' '+styles.like} onClick={()=>{like()}}><Icons id={isLiked?"liked":"like"}/></button>
             <a className={styles.button+' '+styles.download} onClick={()=>{downloadFile(src['original'],'picture')}}><Icons id={"download"}/></a>
               <div className={styles.author}>
-                <img className={styles.authorImage} src="https://images.pexels.com/photos/7250029/pexels-photo-7250029.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
                 <a href={photographer_url}>
                   <span className={styles.authorName}>{photographer}</span>
                 </a>
