@@ -11,8 +11,8 @@ export async function fetchMainPic(){
     const {name:query} = categories[Math.floor(Math.random() * 40)];
     const orientation:string = 'landscape';
 
-    const data = await client.photos.search({ per_page: perPage, orientation, query});
-    let randPic = Math.floor(Math.random() * perPage);
+    const data:Photos = await client.photos.search({ per_page: perPage, orientation, query}) as Photos;
+    let randPic:number = Math.floor(Math.random() * perPage);
     return (data as Photos).photos[randPic];
 }
 
@@ -23,6 +23,7 @@ export async function fetchPics(currentPage:number = 0, category?:string, query?
     if(!category){
         data = await client.photos.curated({ per_page: perPage, page: currentPage+1});
     } else {
+        console.log({ per_page: perPage, page: currentPage+1,query:category+1,...query})
         data = await client.photos.search({ per_page: perPage, page: currentPage+1,query:category+1,...query});
     }
 

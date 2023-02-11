@@ -236,3 +236,17 @@
     background-color:  rgba(78, 82, 81, 0.248);
     margin-bottom: 30px;
 }
+
+@media (max-width:480px){
+    .pexelsLogoContainer{
+        padding-left: 15px;
+        padding-right: 15px;
+        justify-content: space-around;
+    }
+    .pexelsLogoLink {
+        width: 20%;
+    }
+    .pexelsLogoLink svg{
+        width: 100%;
+    }
+}

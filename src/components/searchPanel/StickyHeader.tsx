@@ -13,6 +13,7 @@ const StickyHeader = () => {
 
     window.addEventListener('scroll',()=>{
       const documentRect = document.documentElement.getBoundingClientRect();
+
       if(headerHeigth<-documentRect.top){
         setHidden(hidden=>false);
       } 

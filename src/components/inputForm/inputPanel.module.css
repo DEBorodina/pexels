@@ -241,3 +241,15 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     background-color:  rgba(78, 82, 81, 0.248);
     margin-bottom: 30px;
 }
+
+@media (max-width:480px){
+    .searchInput {
+        font-size: 14px;
+    }
+    .searchForm {
+        width: 80%;
+    }
+    .stickySearchForm {
+        width: 70%;
+    }
+}

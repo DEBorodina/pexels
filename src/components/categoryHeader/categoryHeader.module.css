@@ -160,3 +160,9 @@
     transform: rotate(180deg);
 }
 
+@media (max-width:480px){
+    .filtersContainer {
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+    }
+}

@@ -195,3 +195,45 @@
 .remove{
     display: none;
 }
+
+@media (max-width:480px){
+
+    .header {
+        height: 400px;
+    }
+
+    .pexelsLogoLink {
+        width: 20%;
+    }
+    .pexelsLogoLink svg{
+        width: 100%;
+    }
+
+    .searchHeader {
+        font-size: 22px;
+        line-height: 26px;
+        width: 80%;
+    }
+
+    .searchContainer {
+        padding-top: 50px;
+    }
+
+    .trendingContainer {
+        width: 80%;
+        justify-content: center;
+    }
+
+    .trending {
+        font-size: 12px;
+    }
+
+    .trendingListItem {
+        font-size: 12px;
+    }
+
+    .authorContainer{
+        font-size: 12px;
+    }
+
+}

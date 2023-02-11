@@ -31,10 +31,4 @@ const PictureCardView:React.FC<PictureCardViewProps> = ({picture:{src,photograph
   );
 }
 
-/*  
-          <div className={styles.author}>
-            <img className={styles.authorImage} src="https://images.pexels.com/photos/7250029/pexels-photo-7250029.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
-            <span className={styles.authorName}></span>
-          </div>
-          */
 export default PictureCardView;

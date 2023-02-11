@@ -130,3 +130,19 @@ button{
 .choosen {
     color: #000;
 }
+
+@media (max-width:480px){
+    .main {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .option {
+        font-size: 14px;
+    }
+    .dropDownButton {
+        font-size: 14px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+}

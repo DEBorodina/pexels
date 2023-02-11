@@ -9,7 +9,13 @@ import PicturesLayoutView from './PicturesLayoutView'
 
 const PicturesLayout = () => {
 
-  const columnNumber = 3;
+  const windowInnerWidth = window.innerWidth;
+  let columnNumber:number;
+  if(windowInnerWidth<=480){
+    columnNumber = 1;
+  }else {
+    columnNumber = 3;
+  }
 
   const pictures:Array<Photo>= useSelector((state:{pictures:{pictures:Array<Photo>}}) => state.pictures.pictures);
   const error:string= useSelector((state:{pictures:State}) => state.pictures.error);
@@ -19,6 +25,7 @@ const PicturesLayout = () => {
   pictures.forEach((picture,index)=>{
     devidedPictures[index%columnNumber].push(picture);
   })
+
   const dispatch = useDispatch();
   const {category} = useParams();
 

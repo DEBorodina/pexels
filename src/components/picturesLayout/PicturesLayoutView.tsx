@@ -12,10 +12,12 @@ const PicturesLayoutView:React.FC<PicturesLayoutProps> = memo(({pictures,columnN
 
 
   let columns:Array<JSX.Element> = []; 
-  while(columnNumber>0){
-    columns.push(<PicturesColumn pictures={pictures[3-columnNumber]} key={columnNumber} id={columnNumber}/>);
-    columnNumber-=1;
+  let i = columnNumber;
+  while(i>0){
+    columns.push(<PicturesColumn pictures={pictures[columnNumber-i]} key={i} id={i}/>);
+    i-=1;
   }
+
 
   return (
     <main className={styles.main} id="main">

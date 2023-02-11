@@ -1,3 +1,9 @@
 .column{
     min-width:calc(100%/3);
 }
+
+@media (max-width:480px){
+    .column {
+        min-width:100%;
+    }
+}
