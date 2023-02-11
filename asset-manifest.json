@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/pexels/static/css/main.2d437e68.css",
+    "main.css": "/pexels/static/css/main.3b2afafe.css",
     "main.js": "/pexels/static/js/main.4ffb7bf2.js",
     "static/js/787.d9a3d273.chunk.js": "/pexels/static/js/787.d9a3d273.chunk.js",
     "static/media/pexelsLogoBlack.svg": "/pexels/static/media/pexelsLogoBlack.dbdf929ffb956ad93d83c6d900c2cd43.svg",
@@ -14,12 +14,12 @@
     "static/media/bigArrow.svg": "/pexels/static/media/bigArrow.ae243e88e00280948dbb8df9e888f5a9.svg",
     "static/media/done.svg": "/pexels/static/media/done.138a853e766631b16dcbe93b7e145b3f.svg",
     "static/media/smallArrow.svg": "/pexels/static/media/smallArrow.b674ac22e8b620e2eb56a994d7314b45.svg",
-    "main.2d437e68.css.map": "/pexels/static/css/main.2d437e68.css.map",
+    "main.3b2afafe.css.map": "/pexels/static/css/main.3b2afafe.css.map",
     "main.4ffb7bf2.js.map": "/pexels/static/js/main.4ffb7bf2.js.map",
     "787.d9a3d273.chunk.js.map": "/pexels/static/js/787.d9a3d273.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2d437e68.css",
+    "static/css/main.3b2afafe.css",
     "static/js/main.4ffb7bf2.js"
   ]
 }
