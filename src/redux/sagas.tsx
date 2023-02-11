@@ -19,7 +19,7 @@ const makeQuery = (state:{pictures:{filters:Filters}}) => {
     return query;
   }
 
-const mainPicIsSet = (state:{pictures:State})=>{Boolean(state.pictures.mainPic.url)};
+const mainPicIsSet = (state:{pictures:State})=>Boolean(state.pictures.mainPic.url);
 
 const getCategory = (state:{pictures:State}) => state.pictures.category;
 

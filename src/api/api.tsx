@@ -23,7 +23,6 @@ export async function fetchPics(currentPage:number = 0, category?:string, query?
     if(!category){
         data = await client.photos.curated({ per_page: perPage, page: currentPage+1});
     } else {
-        console.log({ per_page: perPage, page: currentPage+1,query:category+1,...query})
         data = await client.photos.search({ per_page: perPage, page: currentPage+1,query:category+1,...query});
     }
 
